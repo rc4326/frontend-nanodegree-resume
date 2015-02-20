@@ -3,8 +3,8 @@ var bio ={
     "name": "Bob Coyne",
     "role": "Web Devloper",
     "contacts": {
-        "mobile": "815-735-8163",
-        "email": "bob75@comcast.net",
+        "mobile": "555-555-5555",
+        "email": "bob@company.net",
         "github": "rc4326",
         "twitter": "@bobbycoyne",
         "location": "Chicago",
@@ -114,16 +114,16 @@ if (bio.Skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 	
 	var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
-	$("#skills").append(formattedSkills);
+	$("#skills").prepend(formattedSkills);
     formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
-	$("#skills").append(formattedSkills);
+	$("#skills").prepend(formattedSkills);
 	formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
-	$("#skills").append(formattedSkills);
+	$("#skills").prepend(formattedSkills);
 	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
-	$("#skills").append(formattedSkills);
+	$("#skills").prepend(formattedSkills);
 
 }
-
+var displaywork = function() {
 for(job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
@@ -140,8 +140,15 @@ for(job in work.jobs) {
 	
 	var workdescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 	$(".work-entry:last").append(workdescription);
-		
-	
-		
-}
+	}
 
+}
+displaywork();
+
+$(document).click(function(loc) {
+	var x = loc.pageX;
+	var y = loc.pageY;
+
+	logClicks(x,y);
+	
+});
