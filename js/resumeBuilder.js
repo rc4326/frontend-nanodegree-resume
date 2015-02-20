@@ -1,13 +1,13 @@
 
 var bio ={
     "name": "Bob Coyne",
-    "role": "Web Devloper",
+    "role": "Web Developer",
     "contacts": {
         "mobile": "555-555-5555",
         "email": "bob@company.net",
         "github": "rc4326",
         "twitter": "@bobbycoyne",
-        "location": "Chicago",
+        "location": "Chicago,IL",
         "blog": "http://blogspot.runningrelated.com"
     },
     "Welcome Message": "Welcome to my profile!",
@@ -44,7 +44,7 @@ var education={
         {
             "name": "Udacity",
             "site": "http://www.udacity.com",
-            "degree": "Nanodegree Front End Webdevelopment",
+            "degree": "Nanodegree Front End Web development",
             "major": "None"
         }
     ]
@@ -57,7 +57,7 @@ var work = {
             "dates": "June 1991 - May 1996",
             "years": "5",
             "location": "Joliet,IL",
-            "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's second busiest McDonalds."
+            "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's busiest McDonalds."
         },
         {
             "employer": "AT&T",
@@ -65,7 +65,7 @@ var work = {
             "dates": "November 1996 - Present",
             "years": "19",
             "location": "Joliet,IL",
-            "description": "Chief of Staff for the Western Midwest Infrasturcture Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
+            "description": "Chief of Staff for the Western Midwest Infrastructure Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
         }
     ]
 }
@@ -79,7 +79,7 @@ var projects = {
         {
             "title": "Performance Ranking",
             "dates": "2005 - 2014",
-            "Description": "Month over month performance rankings for 54 employees"
+            "description": "Month over month performance rankings for 54 employees"
         }
     ]
 }
@@ -96,7 +96,7 @@ var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio["Welcome Message"]);
 var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
 
-$("#header").prepend(formattedWelcome);
+$("#header").append(formattedWelcome);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#header").append(formattedPict);
@@ -124,7 +124,7 @@ if (bio.Skills.length > 0) {
 
 }
 var displaywork = function() {
-for(job in work.jobs) {
+for( var job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
 	var workemplyer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -146,9 +146,38 @@ for(job in work.jobs) {
 displaywork();
 
 $(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
+ var x = loc.pageX;
+ var y = loc.pageY;
 
-	logClicks(x,y);
-	
+ logClicks(x,y);
+
 });
+
+function inName(name) { 
+	name = bio.name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+	
+		return name[0] +" "+name[1];
+};	
+	
+	$("#main").append(internationalizeButton);
+
+	projects.display = function() {
+		
+		for( var project in projects.projects) {
+				$("#projects").append(HTMLprojectStart);
+				
+				var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+				$(".project-entry:last").append(formattedTitle);
+				var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+				$(".project-entry:last").append(formattedDates);
+				var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+				$(".project-entry:last").append(formattedDescription);	
+		}
+	}
+projects.display();
+
+$("#mapDiv").append(googleMap);
+	
