@@ -1,76 +1,88 @@
 
-var bio = {
-	"name" : "Bob Coyne", 
-	"role" : "Web Devloper",
-	"contacts" : {
-		"mobile": "815-735-8163",
-		"email": "bob75@comcast.net",
-		"github": "rc4326",
-		"twitter": "@bobbycoyne",
-		"location": "Chicago",
-		"blog": "http://blogspot.runningrelated.com"
-	},
-	
-	"Welcome Message": "Welcome to my profile!",
-	"Skills": ["Excel", "Web Development", "Visual Basic", "Scripting"],
-	"BioPic": "images/fry.jpg"
-};
+var bio ={
+    "name": "Bob Coyne",
+    "role": "Web Devloper",
+    "contacts": {
+        "mobile": "815-735-8163",
+        "email": "bob75@comcast.net",
+        "github": "rc4326",
+        "twitter": "@bobbycoyne",
+        "location": "Chicago",
+        "blog": "http://blogspot.runningrelated.com"
+    },
+    "Welcome Message": "Welcome to my profile!",
+    "Skills": [
+        "Excel",
+        "Web Development",
+        "Visual Basic",
+        "Scripting"
+    ],
+    "BioPic": "images/fry.jpg"
+}
 var education={
-	"schools": [{
-		"name": "Plainfield High School",
-		"city": "Plainfield, IL, US",
-		"degree": "None",
-		"major": "None"
-	},
-	{
-		"name": "Joliet Jr. College",
-		"city": "Joliet, IL, US",
-		"degree": "None",
-		"major": "None"
-	}],
-	"onlineSchool": [{
-		"name": "CodeAcademy",
-		"site": "http://www.codeacademy.com",
-		"degree": "None",
-		"major": "None"
-	},
-	{
-		"name": "Udacity",
-		"site": "http://www.udacity.com",
-		"degree": "Nanodegree Front End Webdevelopment",
-		"major": "None"
-	}]
-};
+    "schools": [
+        {
+            "name": "Plainfield High School",
+            "city": "Plainfield, IL, US",
+            "degree": "None",
+            "major": "None"
+        },
+        {
+            "name": "Joliet Jr. College",
+            "city": "Joliet, IL, US",
+            "degree": "None",
+            "major": "None"
+        }
+    ],
+    "onlineSchool": [
+        {
+            "name": "CodeAcademy",
+            "site": "http://www.codeacademy.com",
+            "degree": "None",
+            "major": "None"
+        },
+        {
+            "name": "Udacity",
+            "site": "http://www.udacity.com",
+            "degree": "Nanodegree Front End Webdevelopment",
+            "major": "None"
+        }
+    ]
+}
 var work = {
-	"jobs": [{
-		"employer": "McDonalds",
-		"position": "Shift Manager",
-		"dates": "June 1991 - May 1996",
-		"years": "5",
-		"city":  "Joliet",
-		"description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's second busiest McDonalds."
-		},
-		{
-		"employer": "AT&T",
-		"position": "Chief of Staff",
-		"dates": "November 1996 - Present",
-		"years": "19",
-		"city": "Joliet",
-		"description": "Chief of Staff for the Western Midwest Infrasturcture Maintenance devision of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
-		}
-	]};
+    "jobs": [
+        {
+            "employer": "McDonalds",
+            "position": "Shift Manager",
+            "dates": "June 1991 - May 1996",
+            "years": "5",
+            "city": "Joliet",
+            "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's second busiest McDonalds."
+        },
+        {
+            "employer": "AT&T",
+            "position": "Chief of Staff",
+            "dates": "November 1996 - Present",
+            "years": "19",
+            "city": "Joliet",
+            "description": "Chief of Staff for the Western Midwest Infrasturcture Maintenance devision of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
+        }
+    ]
+}
 var projects = {
-	"projects": [{
-		"title": "Budget",
-		"dates": "2014",
-		"description": "Budget management for the 2014 year"
-		},
-		{
-		"title": "Performance Ranking",
-		"dates": "2005 - 2014",
-		"Description": "Month over month performance rankings for 54 employees"
-		}
-   ]};
+    "projects": [
+        {
+            "title": "Budget",
+            "dates": "2014",
+            "description": "Budget management for the 2014 year"
+        },
+        {
+            "title": "Performance Ranking",
+            "dates": "2005 - 2014",
+            "Description": "Month over month performance rankings for 54 employees"
+        }
+    ]
+}
 
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
