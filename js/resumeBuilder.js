@@ -23,13 +23,13 @@ var education={
     "schools": [
         {
             "name": "Plainfield High School",
-            "city": "Plainfield, IL, US",
+            "location": "Plainfield, IL, US",
             "degree": "None",
             "major": "None"
         },
         {
             "name": "Joliet Jr. College",
-            "city": "Joliet, IL, US",
+            "location": "Joliet, IL, US",
             "degree": "None",
             "major": "None"
         }
@@ -56,7 +56,7 @@ var work = {
             "position": "Shift Manager",
             "dates": "June 1991 - May 1996",
             "years": "5",
-            "city": "Joliet",
+            "location": "Joliet,IL",
             "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's second busiest McDonalds."
         },
         {
@@ -64,8 +64,8 @@ var work = {
             "position": "Chief of Staff",
             "dates": "November 1996 - Present",
             "years": "19",
-            "city": "Joliet",
-            "description": "Chief of Staff for the Western Midwest Infrasturcture Maintenance devision of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
+            "location": "Joliet,IL",
+            "description": "Chief of Staff for the Western Midwest Infrasturcture Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
         }
     ]
 }
@@ -128,10 +128,20 @@ for(job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
 	var workemplyer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	
 	var worktitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-	
 	var empandtitle = workemplyer + worktitle;
-	
 	$(".work-entry:last").append(empandtitle);
+	
+	var workdates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(workdates);
+	
+	var worklocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	$(".work-entry:last").append(worklocation);
+	
+	var workdescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(workdescription);
+		
+	
+		
 }
+
