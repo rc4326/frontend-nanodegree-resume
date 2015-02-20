@@ -1,0 +1,26 @@
+var education={
+	"schools": [{
+		"name": "Plainfield High School",
+		"city": "Plainfield, IL, US",
+		"degree": "None",
+		"major": "None"
+	},
+	{
+		"name": "Joliet Jr. College",
+		"city": "Joliet, IL, US",
+		"degree": "None",
+		"major": "None"
+	}],
+	"onlineSchool": [{
+		"name": "CodeAcademy",
+		"site": "http://www.codeacademy.com",
+		"degree": "None",
+		"major": "None"
+	},
+	{
+		"name": "Udacity",
+		"site": "http://www.udacity.com",
+		"degree": "Nanodegree Front End Webdevelopment",
+		"major": "None"
+	}]
+}
