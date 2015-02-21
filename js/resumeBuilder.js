@@ -1,4 +1,4 @@
-
+//JSON code Contains Bio, Education, Work Experience, and Projects
 var bio ={
     "name": "Bob Coyne",
     "role": "Web Developer",
@@ -22,30 +22,30 @@ var bio ={
 var education={
     "schools": [
         {
-            "name": "Plainfield High School",
-            "location": "Plainfield, IL, US",
-            "degree": "None",
-            "major": "None"
+            "name": "Perdue University",
+            "location": "610 Perdue Mall, West Lafayette, IN, US",
+            "degree": ["B.E.E."],
+            "major": "Mathmatics"
         },
         {
-            "name": "Joliet Jr. College",
-            "location": "Joliet, IL, US",
-            "degree": "None",
-            "major": "None"
+            "name": "University of Michigan",
+            "location": "Ann Arbor, MI, US",
+			"degree": ["M.E."],
+            "major": "Engineering"
         }
     ],
     "onlineSchool": [
         {
-            "name": "CodeAcademy",
-            "site": "http://www.codeacademy.com",
-            "degree": "None",
-            "major": "None"
+			"title" : "Python",
+            "school": "CodeAcademy",
+			"dates" : "2013 - 2014",
+            "url": "www.codeacademy.com"
         },
         {
-            "name": "Udacity",
-            "site": "http://www.udacity.com",
-            "degree": "Nanodegree Front End Web development",
-            "major": "None"
+            "title" : "Front End Web Devloper",
+			"school": "Udacity",
+			"dates" : 2015,
+            "url": "www.udacity.com"
         }
     ]
 }
@@ -55,7 +55,6 @@ var work = {
             "employer": "McDonalds",
             "position": "Shift Manager",
             "dates": "June 1991 - May 1996",
-            "years": "5",
             "location": "Joliet,IL",
             "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's busiest McDonalds."
         },
@@ -63,7 +62,6 @@ var work = {
             "employer": "AT&T",
             "position": "Chief of Staff",
             "dates": "November 1996 - Present",
-            "years": "19",
             "location": "Joliet,IL",
             "description": "Chief of Staff for the Western Midwest Infrastructure Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
         }
@@ -83,7 +81,7 @@ var projects = {
         }
     ]
 }
-
+//Places the Bio info into the Resume using a direct replace function
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedPict = HTMLbioPic.replace("%data%", bio.BioPic);
@@ -110,6 +108,7 @@ $("#topContacts").append(formattedBlog);
 $("#topContacts").append(formattedGithub);
 $("#topContacts").append(formattedLocation);
 
+//places the Skills into the resume using an if statement
 if (bio.Skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 	
@@ -123,6 +122,8 @@ if (bio.Skills.length > 0) {
 	$("#skills").prepend(formattedSkills);
 
 }
+
+//Places work experiance into the resume using a function and a For In Loop
 var displaywork = function() {
 for( var job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
@@ -145,6 +146,7 @@ for( var job in work.jobs) {
 }
 displaywork();
 
+//tracks user clicks on the webpage
 $(document).click(function(loc) {
  var x = loc.pageX;
  var y = loc.pageY;
@@ -153,6 +155,7 @@ $(document).click(function(loc) {
 
 });
 
+//adds the internationalize button to the bottom of the page and changes the name to display Firstname LASTNAME
 function inName(name) { 
 	name = bio.name.trim().split(" ");
 	console.log(name);
@@ -164,6 +167,7 @@ function inName(name) {
 	
 	$("#main").append(internationalizeButton);
 
+//adds projects to the resume using encapsulation
 	projects.display = function() {
 		
 		for( var project in projects.projects) {
@@ -179,5 +183,61 @@ function inName(name) {
 	}
 projects.display();
 
+	education.display = function() {
+		
+		for(var school in education.schools) {
+		
+			$("#education").append(HTMLschoolStart);
+			
+			var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+			$(".education-entry:last").append(formattedName);
+			
+			var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+			$(".education-entry:last").append(formattedLocation);
+			
+			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			$(".education-entry:last").append(formattedDegree);
+			
+			var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+			$(".education-entry:last").append(formattedMajor);
+		}
+		
+				if(education.onlineSchool.length > 0) {
+				$("#education").append(HTMLonlineClasses);
+				
+					for(var olschool in education.onlineSchool) {
+					
+					$("#education").append(HTMLschoolStart);
+					
+					var formTitle = HTMLonlineTitle.replace("%data%", education.onlineSchool[olschool].title);
+					$(".education-entry:last").append(formTitle);
+					
+					var formDates = HTMLonlineDates.replace("%data%", education.onlineSchool[olschool].dates);
+					$(".education-entry:last").append(formDates);
+					
+					var formSchool = HTMLonlineSchool.replace("%data%", education.onlineSchool[olschool].school);
+					$(".education-entry:last").append(formSchool);
+					
+					var formURL = HTMLonlineURL.replace("%data%", education.onlineSchool[olschool].url);
+					$(".education-entry:last").append(formURL);
+					
+					} 
+				}
+	}	
+	
+education.display();
+
+		
+		
+
+		
+		
+		
+
+	
+
+
+
+//adding an interactive map to the resume to display past work and school locations
 $("#mapDiv").append(googleMap);
 	
