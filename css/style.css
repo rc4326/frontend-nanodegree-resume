@@ -116,7 +116,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #0066FF;
 }
 
 .flex-box {
@@ -132,7 +132,7 @@ a {
   padding-top: 2.5%;
   padding-left: 5%;
   padding-right: 5%;
-  padding-bottom: 2.5%
+  padding-bottom: 2.5%;
 }
 
 ul {
@@ -148,7 +148,14 @@ ul {
 
 img {
   padding: 10px;
+  
 }
+
+img.projects {
+	height: 336px;
+	width: 396px;
+  
+  }
 
 /* Bar chart stuff */
 .chart div {
