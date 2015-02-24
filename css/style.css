@@ -79,6 +79,19 @@ a {
   display: block;
 }
 
+a.blog {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline;
+}
+
+a:hover {
+ 
+ color: #FF0000;
+ 
+ }
+
 .welcome-message {
   font-style: italic;
   font-size: 18px;
@@ -116,14 +129,15 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #0066FF;
+  background-image: url("../images/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .flex-box {
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
 }
@@ -140,12 +154,25 @@ ul {
 }
 
 .biopic {
+  border-radius: 10%;
   float: left;
   padding: 10px;
   width: 200px;
   display: none;
+  
 }
 
+.img-thumbnail {
+  padding: 4px;
+  line-height: 1.42857143;
+  border-radius: 25px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  height: 336px;
+  width: 396px;
+}
 img {
   padding: 10px;
   

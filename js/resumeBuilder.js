@@ -7,16 +7,17 @@ var bio ={
         "mobile": "555-555-5555",
         "email": "bob@company.net",
         "github": "rc4326",
-        "twitter": "@bobbycoyne",
-        "location": "Chicago,IL",
-        "blog": "http://blogspot.runningrelated.com"
+        "twitter": '<a href="https://twitter.com/Bobbycoyne" class="twitter-follow-button" data-show-count="false">Follow @Bobbycoyne</a>',
+        "blog": "runningrelated.blogspot.com",
+		"BlogName": "Running Related",
+		"location": "Chicago,IL"
     },
     "Welcome Message": "Welcome to my profile!",
     "Skills": [
-        "Excel",
+        "MSExcel",
         "Web Development",
-        "Visual Basic",
-        "Scripting"
+        "Programming: VB, C, Java, JS, Python, SQL",
+        "Data Analysis: Hadoop, R"
     ],
     "BioPic": "images/me2.jpg"
 }
@@ -29,8 +30,8 @@ var bio ={
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-	var formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog);
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	var formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog).replace("%data%", bio.contacts.BlogName);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio["Welcome Message"]);
 	var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
@@ -68,8 +69,6 @@ var bio ={
 	}
 
 }
-
-
 //Bio section end
 
 //Work Section Begin
@@ -80,14 +79,14 @@ var work = {
             "position": "Shift Manager",
             "dates": "June 1991 - May 1996",
             "location": "Joliet,IL",
-            "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's busiest McDonalds."
+            "description": "Worked as a morning, afternoon, and evening shift supervisor. Managing a crew of 15 employee's at Joliet's busiest McDonalds. Responsiblities included efficent time maangement, balancing reciepts, tracking hours, handling customer complaints, protecting employee's, and protecting McDonalds real estate assests."
         },
         {
             "employer": "AT&T",
             "position": "Chief of Staff",
             "dates": "November 1996 - Present",
             "location": "Joliet,IL",
-            "description": "Chief of Staff for the Western Midwest Infrastructure Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana."
+            "description": "Chief of Staff for the Western Midwest Infrastructure Maintenance division of AT&T Technology Operations. I assist in maintaining reports for Illinois, Wisconsin, and North West Indiana. Other tasks include compliance training and tracking, Safety results, performance improvement plans, and stragetic business process improvements."
         }
     ]
 }
@@ -112,7 +111,6 @@ for( var job in work.jobs) {
 	}
 
 }
-
 //Work Section End
 
 //Projects begin
@@ -164,12 +162,12 @@ var projects = {
 var education={
     "schools": [
         {
-            "name": "Perdue University",
+            "name": "Purdue University",
             "location": "610 Perdue Mall, West Lafayette, IN, US",
             "degree": "B.E.E.",
             "majors": ["Mathmatics", "Phyisics"],
 			"dates" : 1998,
-			"url" : "http://www.perdue.edu"
+			"url" : "http://www.purdue.edu"
         },
         {
             "name": "University of Michigan",
@@ -203,13 +201,17 @@ var education={
 			$("#education").append(HTMLschoolStart);
 			
 			var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name).replace("#", education.schools[school].url);
-			$(".education-entry:last").append(formattedName);
-						
+			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			var NameandDegree = formattedName + formattedDegree;
+			$(".education-entry:last").append(NameandDegree);			
+			
 			var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
 			$(".education-entry:last").append(formattedLocation);
+
+			var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+			$(".education-entry:last").append(formattedDates);
 			
-			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-			$(".education-entry:last").append(formattedDegree);
+
 			
 			var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
 			$(".education-entry:last").append(formattedMajor);
@@ -246,14 +248,7 @@ education.display();
 //adding an interactive map to the resume to display past work and school locations
 $("#mapDiv").append(googleMap);
 	
-//tracks user clicks on the webpage dispplaysin console.log
-$(document).click(function(loc) {
- var x = loc.pageX;
- var y = loc.pageY;
 
- logClicks(x,y);
-
-});
 
 //adds the internationalize button to the bottom of the page and changes the name to display Firstname LASTNAME
 function inName(name) { 
@@ -266,3 +261,12 @@ function inName(name) {
 };	
 	
 	$("#main").append(internationalizeButton);
+
+	//twitter button
+	!function(d,s,id){
+		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+		if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+		fjs.parentNode.insertBefore(js,fjs);
+		}
+	}
+	(document, 'script', 'twitter-wjs');

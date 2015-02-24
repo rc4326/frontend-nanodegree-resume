@@ -20,10 +20,10 @@ var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><
 var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
 var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
 var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
+var HTMLblog = '<li  class="flex-item"><span class="orange-text">blog</span><span class="white-text"><a href=http://%data% target="_blank" class="blog">%data%</span></li>';
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
+var HTMLbioPic = '<img class="biopic" src="%data%" alt="Profile Picture">';
 var HTMLWelcomeMsg = '<span class="welcome-message">%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills"></ul>';
@@ -40,11 +40,11 @@ var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img class="projects" src="%data%">';
+var HTMLprojectImage = '<img class="img-thumbnail" src="%data%" alt="project picture">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#">%data%';
-var HTMLschoolDegree = ' -- %data%</a>';
+var HTMLschoolName = '<a href="#" target="_blank">%data%';
+var HTMLschoolDegree = ' --%data%</a>';
 var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Majors: %data% </em>';
@@ -53,7 +53,7 @@ var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data% </a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
+var HTMLonlineURL = '<br><a href="#" target="_blank">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
@@ -85,7 +85,10 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+ var x = loc.pageX;
+ var y = loc.pageY;
+
+ logClicks(x,y);
 });
 
 
@@ -154,30 +157,40 @@ function initializeMap() {
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
-    // marker is an object with additional data about the pin for a single location
-    var marker = new google.maps.Marker({
-      map: map,
-      position: placeData.geometry.location,
-      title: name
+     //marker is an object with additional data about the pin for a single location
+     var marker = new google.maps.Marker({
+     map: map,
+     position: placeData.geometry.location,
+     title: name
     });
 
+	function addinfowindows() {
+			infowindow = new google.maps.infoWindow();
+				for(i=0; i < locations.length; i++) {
+					infoWindow.setContent(locations[i]);
+				}
+	}
+	addinfowindows();
+	//var home = "This one is home."
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
-    // about a location. 
-	var contentString = '<div class="popup"> <h3> One of My Places</h3><p>I live here, worked here or went to school here.</p></div>';
-    var infoWindow = new google.maps.InfoWindow({
-		content: contentString
-    });
+    // about a location. 		
+ 	//var infoWindow = new google.maps.InfoWindow({
+		//content: home
+    //});
+
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'mouseover', function() {
-      // your code goes here!	  
+ 
 	  infoWindow.open(map,marker);
+	  
     });
 
 	    google.maps.event.addListener(marker, 'mouseout', function() {
-      // your code goes here!	  
+			
 	  infoWindow.close();
+	  
     });
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
@@ -219,7 +232,9 @@ function initializeMap() {
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
       service.textSearch(request, callback);
+
     }
+
   }
 
   // Sets the boundaries of the map based on pin locations
@@ -231,7 +246,7 @@ function initializeMap() {
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-
+		 
 }
 
 /*
