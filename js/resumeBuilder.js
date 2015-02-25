@@ -163,7 +163,7 @@ var education={
     "schools": [
         {
             "name": "Purdue University",
-            "location": "610 Perdue Mall, West Lafayette, IN, US",
+            "location": "West Lafayette, IN",
             "degree": "B.E.E.",
             "majors": ["Mathmatics", "Phyisics"],
 			"dates" : 1998,
@@ -171,7 +171,7 @@ var education={
         },
         {
             "name": "University of Michigan",
-            "location": "Ann Arbor, MI, US",
+            "location": "Ann Arbor, MI ",
 			"degree": "M.E.",
             "majors": ["Engineering", "Mathmatics"],
 			"dates" : 2002,

@@ -1,9 +1,6 @@
 /*
-
 This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
 Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
 Cameron Pittman
 */
 
@@ -163,30 +160,34 @@ function initializeMap() {
      position: placeData.geometry.location,
      title: name
     });
-
-	function addinfowindows() {
-			infowindow = new google.maps.infoWindow();
-				for(i=0; i < locations.length; i++) {
-					infoWindow.setContent(locations[i]);
-				}
+	
+	
+	//created info windows to correspond with where I worked, lived, and went to school
+	//I had trouble figuring this out. There may be a better way, but this worked for my purposes.
+	if(placeData.name === "Joliet"){
+		var myloc = '<img src="./images/att.jpg" alt="ATT" class="img-infowindow"><p>This is where I work!</p>';
+	}else if(placeData.name === "Ann Arbor") {
+		var myloc = '<img src="./images/michiganflag.png" alt="Michigan University" class="img-infowindow"><p>I went to school here!</p>';
+	}else if(placeData.name === "West Lafayette") {
+		var myloc = '<img src="./images/purdue.jpg" alt="Purdue University" class="img-infowindow"><p>I went to graduate school here!</p>';
+	}else if(placeData.name === "Chicago"){
+		var myloc = '<img src="./images/chicago.jpg" alt="Chicago Skyline" class="img-infowindow"><p>This is where I live!</p>';
+	}else {		
+		var myloc = '<h3>No Idea</h3><p>I have no idea where this is!</p>';
 	}
-	addinfowindows();
-	//var home = "This one is home."
-    // infoWindows are the little helper windows that open when you click
-    // or hover over a pin on a map. They usually contain more information
-    // about a location. 		
- 	//var infoWindow = new google.maps.InfoWindow({
-		//content: home
-    //});
+	  	var infoWindow = new google.maps.InfoWindow({
+			content: myloc
+		});	
 
 
-    // hmmmm, I wonder what this is about...
+
+    // Opens the InfoWindow when you mouseover the map pin
     google.maps.event.addListener(marker, 'mouseover', function() {
  
 	  infoWindow.open(map,marker);
 	  
     });
-
+	//closes the InfoWindow when you move the mouse off the map pin
 	    google.maps.event.addListener(marker, 'mouseout', function() {
 			
 	  infoWindow.close();
@@ -211,6 +212,7 @@ function initializeMap() {
     }
   }
 
+  
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
@@ -233,6 +235,7 @@ function initializeMap() {
       // function with the search results after each search.
       service.textSearch(request, callback);
 
+		
     }
 
   }
@@ -245,8 +248,8 @@ function initializeMap() {
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
-  pinPoster(locations);
-		 
+ 		 pinPoster(locations);
+
 }
 
 /*

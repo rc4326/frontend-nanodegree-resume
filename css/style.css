@@ -165,7 +165,6 @@ ul {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  border-radius: 25px;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -173,6 +172,13 @@ ul {
   height: 336px;
   width: 396px;
 }
+
+.img-infowindow {
+	padding: 4px;
+	height: 150px;
+	width: 150px;
+}
+
 img {
   padding: 10px;
   
